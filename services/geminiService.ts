@@ -18,7 +18,7 @@ const clampTemp = (temp: number) => Math.min(32, Math.max(28, temp));
 export async function askWeatherAI(prompt: string, context: string, lang: AppLanguage) {
   try {
     const response = await ai.models.generateContent({
-      model: 'gemini-3-flash-preview',
+      model: 'gemini-1.5-flash',
       contents: `Context: ${context}\n\nUser Question: ${prompt}`,
       config: {
         systemInstruction: `You are EnvAI, a friendly and cute environmental assistant for the EnvWrist app. Respond in ${LANG_NAMES[lang]}. Use simple, encouraging language suitable for 14-year-olds and seniors. Use emojis! Always answer in the requested language. Note: For this specific app, temperatures are strictly maintained between 28°C and 32°C.`,
@@ -34,7 +34,7 @@ export async function askWeatherAI(prompt: string, context: string, lang: AppLan
 export async function getRealtimeWeather(lat: number, lon: number, lang: AppLanguage) {
   try {
     const response = await ai.models.generateContent({
-      model: 'gemini-3-flash-preview',
+      model: 'gemini-1.5-flash',
       contents: `Find the current real-time weather and city name for coordinates: latitude ${lat}, longitude ${lon}. 
       Provide: City Name, Temperature in Celsius (STRICTLY between 28 and 32), Condition (choose ONLY from: Sunny, Cloudy, Rainy, Thunder), Pressure (hPa), Altitude (meters), Humidity (%), VOC (ppm, 0.0-0.5), and Air Status (Good, Moderate, Bad).
       Include a "description" field which is a short 1-sentence advice or status update in ${LANG_NAMES[lang]}.`,
@@ -75,7 +75,7 @@ export async function getRealtimeWeather(lat: number, lon: number, lang: AppLang
 export async function getHourlyForecast(location: string, lang: AppLanguage) {
   try {
     const response = await ai.models.generateContent({
-      model: 'gemini-3-flash-preview',
+      model: 'gemini-1.5-flash',
       contents: `Provide an hourly weather forecast for the next 8 hours for ${location}. Include Time (e.g., 2 PM), Temp (STRICTLY between 28 and 32), and Condition (Sunny, Cloudy, Rainy, or Thunder). Translate the time format suitable for ${LANG_NAMES[lang]}.`,
       config: {
         tools: [{ googleSearch: {} }],
@@ -105,7 +105,7 @@ export async function getHourlyForecast(location: string, lang: AppLanguage) {
 export async function get20DayForecast(location: string, lang: AppLanguage) {
   try {
     const response = await ai.models.generateContent({
-      model: 'gemini-3-flash-preview',
+      model: 'gemini-1.5-flash',
       contents: `Provide a 20-day weather forecast for ${location}. For each day, provide the Day Name, Estimated Temperature (STRICTLY between 28 and 32), and Condition (Sunny, Cloudy, Rainy, or Thunder). Translate day names to ${LANG_NAMES[lang]}.`,
       config: {
         tools: [{ googleSearch: {} }],
