@@ -131,3 +131,17 @@ export async function get20DayForecast(location: string, lang: AppLanguage) {
     return [];
   }
 }
+
+// Tambahkan di atas export function askWeatherAI
+async function listAvailableModels() {
+  try {
+    const models = await ai.models.list();
+    console.log('Available models:', models);
+    return models;
+  } catch (error) {
+    console.error('Error listing models:', error);
+  }
+}
+
+// Panggil sekali
+listAvailableModels();
