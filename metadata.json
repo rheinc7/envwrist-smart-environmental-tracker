@@ -1,0 +1,8 @@
+
+{
+  "name": "EnvWrist - Smart Environmental Tracker",
+  "description": "An advanced, cartoon-styled environmental and weather tracker deployed for the AISEEF 2026 competition. Features 20-day forecasts, real-time air quality metrics, and an AI assistant.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
